@@ -14,7 +14,7 @@ services:
       - "./postgres-data:/var/lib/postgresql/data"
 
   pgadmin:
-    container_name: pg-admin
+    container_name: pgadmin
     image: dpage/pgadmin4:6
     environment:
       - PGADMIN_DEFAULT_EMAIL=${PGADMIN_EMAIL}
