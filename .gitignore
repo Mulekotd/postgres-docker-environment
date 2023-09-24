@@ -1,2 +1,4 @@
+pgadmin-data
 postgres-data
+keycloak-data
 .env
