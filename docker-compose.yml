@@ -28,7 +28,7 @@ services:
     ports:
       - "5050:5050"
     volumes:
-      - "pgadmin-data:/var/lib/pgadmin"
+      - "./pgadmin-data:/var/lib/pgadmin"
       - "/etc/timezone:/etc/timezone:ro"
       - "/etc/localtime:/etc/localtime:ro"
     networks:
@@ -51,8 +51,6 @@ services:
       - DB_PASSWORD=${KEYCLOAK_DB_PSWD}
     command:
       - start-dev
-    volumes:
-      - "./configfiles/auth/keycloak_init.sh:/opt/jboss/startup-scripts/1.sh"
     ports:
       - "8080:8080"
     restart: always
