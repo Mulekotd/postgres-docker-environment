@@ -1,5 +1,4 @@
 version: "3.9"
-
 services:
   postgres:
     container_name: postgres
@@ -28,7 +27,7 @@ services:
     ports:
       - "5050:5050"
     volumes:
-      - "./pgadmin-data:/var/lib/pgadmin"
+      - "pgadmin-data:/var/lib/pgadmin"
       - "/etc/timezone:/etc/timezone:ro"
       - "/etc/localtime:/etc/localtime:ro"
     networks:
@@ -49,8 +48,13 @@ services:
       - DB_SCHEMA=public
       - DB_USER=${KEYCLOAK_DB_USER}
       - DB_PASSWORD=${KEYCLOAK_DB_PSWD}
+    volumes:
+      - "./configfiles/auth/keycloak_init.sh:/opt/jboss/startup-scripts/1.sh"
     command:
       - start-dev
+      - --proxy=edge
+      - --hostname-strict=false
+      - --hostname-strict-https=false
     ports:
       - "8080:8080"
     restart: always
@@ -75,6 +79,28 @@ services:
       timeout: 10s
       retries: 6
       start_period: 2m
+    networks:
+      - pgadmin-network
+      - default
+
+  nginx:
+    image: nginx:latest
+    container_name: nginx
+    volumes:
+      - "./configfiles/sites/development.conf:/etc/nginx/conf.d/development.conf"
+      - "./configfiles/nginx-common/:/etc/nginx/nginxconfig.io/"
+      - "/etc/timezone:/etc/timezone:ro"
+      - "/etc/localtime:/etc/localtime:ro"
+    healthcheck:
+      test: service nginx status || exit 1
+      interval: 30s
+      timeout: 10s
+      retries: 6
+      start_period: 2m
+    ports:
+      - "80:80"
+    restart:
+      always
     networks:
       - pgadmin-network
       - default
