@@ -114,6 +114,9 @@ services:
       - "80:80"
     restart:
       always
+    depends_on:
+      - keycloak
+      - pgadmin
     networks:
       - pgadmin-network
       - default
