@@ -119,4 +119,4 @@ This project is open-source and is provided under the MIT License. You are free 
 
 ## Feedback and Contributions
 
-We welcome feedback, suggestions, and contributions from the community. If you have ideas for improvements or encounter any issues, please don't hesitate to [open an issue](https://github.com/Mulekotd/simple-react-calculator/issues) on GitHub.
+We welcome feedback, suggestions, and contributions from the community. If you have ideas for improvements or encounter any issues, please don't hesitate to [open an issue](https://github.com/Mulekotd/dockerized-environment-stack/issues) on GitHub.
