@@ -27,9 +27,9 @@ Follow these steps to set up the containerized development environment:
 Clone this repository to your local machine or download the source code
 
 ```bash
-git clone https://github.com/Mulekotd/postgres-docker-environment.git
+git clone https://github.com/Mulekotd/postgresql-dockerized.git
 
-cd postgres-docker-environment
+cd postgresql-dockerized
 ```
 
 **2 - Set up environment variables:**
