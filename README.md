@@ -64,7 +64,7 @@ With the containerized development environment set up, you can now develop and t
 
 ## PostgreSQL Database
 
-![postgres](https://snipboard.io/b37Zrl.jpg)
+![postgres](https://snipboard.io/id2Wcn.jpg)
 
 The project containerizes a PostgreSQL database using Docker. It allows developers to easily deploy and manage a PostgreSQL instance for their development needs. Key features include:
 
@@ -75,7 +75,7 @@ The project containerizes a PostgreSQL database using Docker. It allows develope
 
 ## PGAdmin Management Tool
 
-![pgadmin](https://snipboard.io/QrXZ4E.jpg)
+![pgadmin](https://snipboard.io/6jWxiR.jpg)
 
 The project also incorporates PGAdmin, a popular PostgreSQL management tool. This tool simplifies database administration and provides a user-friendly interface. Key features include:
 
@@ -85,8 +85,6 @@ The project also incorporates PGAdmin, a popular PostgreSQL management tool. Thi
 * Data Persistence: Ensures data persistence by mounting the PGAdmin data directory to a local volume.
 
 ## Nginx Reverse Proxy
-
-![nginx](https://snipboard.io/tIDw4x.jpg)
 
 The project employs Nginx as a reverse proxy server, enabling you to efficiently route traffic to different services within your development environment. Key features include:
 
