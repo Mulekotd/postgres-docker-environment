@@ -2,24 +2,24 @@ version: "3.9"
 services:
   postgres:
     container_name: postgres
-    image: postgres:12
+    image: postgres:latest
     environment:
       - POSTGRES_DB=${POSTGRES_DB}
       - POSTGRES_USER=${POSTGRES_USER}
       - POSTGRES_PASSWORD=${POSTGRES_PSWD}
     ports:
-      - "5433:5433"
+      - "5432:5432"
     volumes:
-      - "./postgres-data:/var/lib/postgresql/data"
+      - "postgres-data:/var/lib/postgresql/data"
       - "/etc/timezone:/etc/timezone:ro"
       - "/etc/localtime:/etc/localtime:ro"
     healthcheck:
-      test: pg_isready -h postgres -p 5433 -U ${POSTGRES_USER} || exit 1
+      test: pg_isready -h postgres -p 5432 -U ${POSTGRES_USER} || exit 1
       interval: 30s
       timeout: 10s
       retries: 6
       start_period: 2m
-    command: -p 5433
+    command: -p 5432
     restart: always
     networks:
       - pgadmin-network
@@ -27,7 +27,7 @@ services:
 
   pgadmin:
     container_name: pgadmin
-    image: dpage/pgadmin4:6
+    image: dpage/pgadmin4:latest
     environment:
       - PGADMIN_DEFAULT_EMAIL=${PGADMIN_EMAIL}
       - PGADMIN_DEFAULT_PASSWORD=${PGADMIN_PSWD}
@@ -44,52 +44,6 @@ services:
       timeout: 10s
       retries: 6
       start_period: 2m
-    networks:
-      - pgadmin-network
-      - default
-
-  keycloak:
-    image: quay.io/keycloak/keycloak:latest
-    container_name: keycloak
-    environment:
-      - KEYCLOAK_ADMIN=${KEYCLOAK_USER}
-      - KEYCLOAK_ADMIN_PASSWORD=${KEYCLOAK_PSWD}
-      - PROXY_ADDRESS_FORWARDING=true
-      - DB_SCHEMA=public
-      - DB_VENDOR=${DB_VENDOR}
-      - DB_ADDR=${DB_ADDR}
-      - DB_DATABASE=${KEYCLOAK_DB}
-      - DB_USER=${KEYCLOAK_DB_USER}
-      - DB_PASSWORD=${KEYCLOAK_DB_PSWD}
-    command:
-      - start-dev
-    ports:
-      - "8080:8080"
-    restart: always
-    depends_on:
-      - keycloak-db
-    networks:
-      - pgadmin-network
-      - default
-
-  keycloak-db:
-    image: postgres:11-alpine
-    container_name: keycloak-db
-    environment:
-      - POSTGRES_DB=${KEYCLOAK_DB}
-      - POSTGRES_USER=${KEYCLOAK_DB_USER}
-      - POSTGRES_PASSWORD=${KEYCLOAK_DB_PSWD}
-    ports:
-      - "5432:5432"
-    volumes:
-      - "./keycloak-data:/var/lib/postgresql/data"
-    healthcheck:
-      test: pg_isready -U ${KEYCLOAK_DB_USER} || exit 1
-      interval: 30s
-      timeout: 10s
-      retries: 6
-      start_period: 2m
-    restart: always
     networks:
       - pgadmin-network
       - default
@@ -113,7 +67,6 @@ services:
     restart:
       always
     depends_on:
-      - keycloak
       - pgadmin
     networks:
       - pgadmin-network
@@ -122,7 +75,6 @@ services:
 volumes:
   postgres-data:
   pgadmin-data:
-  keycloak-data:
 
 networks:
   pgadmin-network:
