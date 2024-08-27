@@ -27,9 +27,9 @@ Follow these steps to set up the containerized development environment:
 Clone this repository to your local machine or download the source code
 
 ```bash
-git clone https://github.com/Mulekotd/dockerized-environment-stack.git
+git clone https://github.com/Mulekotd/postgres-docker-environment.git
 
-cd dockerized-environment-stack
+cd postgres-docker-environment
 ```
 
 **2 - Set up environment variables:**
@@ -43,12 +43,6 @@ POSTGRES_PSWD=mysecretpassword
 
 PGADMIN_EMAIL=admin@example.com
 PGADMIN_PSWD=pgadminpassword
-
-KEYCLOAK_USER=adminuser
-KEYCLOAK_PSWD=keycloakpassword
-KEYCLOAK_DB=keycloakdb
-KEYCLOAK_DB_USER=keycloakdbuser
-KEYCLOAK_DB_PSWD=dbuserpassword
 
 DB_VENDOR=postgresql
 DB_ADDR=database-host
@@ -89,17 +83,6 @@ The project also incorporates PGAdmin, a popular PostgreSQL management tool. Thi
 * Secure Access: Configure PGAdmin with a default email and password for secure access.
 * Port Mapping: Maps port 5050 on your local machine to the PGAdmin container for convenient management.
 * Data Persistence: Ensures data persistence by mounting the PGAdmin data directory to a local volume.
-
-## Keycloak Identity Provider
-
-![keycloak](https://snipboard.io/DVH1yQ.jpg)
-
-The project includes Keycloak, an open-source identity and access management solution. Keycloak simplifies user authentication and authorization, making it ideal for securing your applications. Key features include:
-
-* Keycloak Version: Deploys the latest Keycloak image from Quay.io.
-* Admin Configuration: Customize your Keycloak admin credentials for secure access.
-* Database Integration: Seamlessly integrates with a PostgreSQL database for user management.
-* Port Mapping: Maps port 8080 on your local machine to the Keycloak container for easy access.
 
 ## Nginx Reverse Proxy
 
