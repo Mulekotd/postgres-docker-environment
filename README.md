@@ -1,4 +1,4 @@
-# Containerized Development Environment with Docker
+# PostgreSQL Development Environment with Docker
 
 This repository offers a streamlined solution for quickly setting up and managing a development environment that incorporates a database, a reverse proxy tool, and an identity provider using Docker containers.
 
@@ -94,12 +94,6 @@ The project employs Nginx as a reverse proxy server, enabling you to efficiently
 * Custom Configuration: Easily customize Nginx configuration by mounting your own configuration files.
 * Port Mapping: Maps port 80 on your local machine to the Nginx container for traffic routing.
 
-## License
-
-This project is open-source and is provided under the MIT License. You are free to use and modify it as needed. Feel free to contribute to the project or report any issues on the GitHub repository.
-
-![mit](https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/MIT_logo.svg/1920px-MIT_logo.svg.png)
-
 ## Feedback and Contributions
 
-We welcome feedback, suggestions, and contributions from the community. If you have ideas for improvements or encounter any issues, please don't hesitate to [open an issue](https://github.com/Mulekotd/dockerized-environment-stack/issues) on GitHub.
+We welcome feedback, suggestions, and contributions from the community. If you have ideas for improvements or encounter any issues, please don't hesitate to [open an issue](https://github.com/Mulekotd/postgresql-dockerized/issues) on GitHub.
